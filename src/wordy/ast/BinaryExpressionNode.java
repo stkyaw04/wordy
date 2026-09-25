@@ -2,6 +2,7 @@ package wordy.ast;
 
 import wordy.interpreter.EvaluationContext;
 
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -79,6 +80,50 @@ public class BinaryExpressionNode extends ExpressionNode {
                 return lhsVal / rhsVal;
             case EXPONENTIATION:
                 return Math.pow(lhsVal, rhsVal);
+            default:
+                throw new IllegalStateException("Unknown operator: " + operator);
+        }
+    }
+
+    @Override
+    public void compile(PrintWriter out) {
+
+        switch (operator) {
+            case ADDITION:
+                out.print("(");
+                lhs.compile(out);
+                out.print(" + ");
+                rhs.compile(out);
+                out.print(")");
+                break;
+            case SUBTRACTION:
+                out.print("(");
+                lhs.compile(out);
+                out.print(" - ");
+                rhs.compile(out);
+                out.print(")");
+                break;
+            case MULTIPLICATION:
+                out.print("(");
+                lhs.compile(out);
+                out.print(" * ");
+                rhs.compile(out);
+                out.print(")");
+                break;
+            case DIVISION:
+                out.print("(");
+                lhs.compile(out);
+                out.print(" / ");
+                rhs.compile(out);
+                out.print(")");
+                break;
+            case EXPONENTIATION:
+                out.print("Math.pow(");
+                lhs.compile(out);
+                out.print(", ");
+                rhs.compile(out);
+                out.print(")");
+                break;
             default:
                 throw new IllegalStateException("Unknown operator: " + operator);
         }
