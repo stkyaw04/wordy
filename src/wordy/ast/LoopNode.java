@@ -4,6 +4,7 @@ import wordy.interpreter.EvaluationContext;
 import wordy.interpreter.LoopExited;
 
 import javax.swing.plaf.nimbus.State;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -52,5 +53,11 @@ public class LoopNode extends StatementNode {
                 body.run(context);
             }
         } catch (LoopExited e) { return; }
+    }
+
+    @Override
+    public void compile(PrintWriter out) {
+        out.print("while(true) ");
+        body.compile(out);
     }
 }

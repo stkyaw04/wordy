@@ -64,6 +64,6 @@ public class VariableNode extends ExpressionNode {
 
     @Override
     public void compile(PrintWriter out) {
-        out.print("context." + name);
+        out.print ("context." + name);
     }
 }

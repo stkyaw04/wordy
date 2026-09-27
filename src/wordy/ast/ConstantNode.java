@@ -54,6 +54,6 @@ public final class ConstantNode extends ExpressionNode {
 
     @Override
     public void compile(PrintWriter out) {
-        out.println(value);
+        out.print(value);
     }
 }
