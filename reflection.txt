@@ -1,0 +1,5 @@
+While implementing the interpreter was straightforward because it was simply executing the code given the context, the compiler part got me stuck at many parts.\ 
+Especially BlockNode because even though it passes the test, it rendered weirdly on the UI. The indentations were missing and there were more curly brackets than necessary.\
+Even after comparing and using Paul's code, it still doesn't look right to me and implementing this meant playing around with print vs println and finally, I settled\
+with just having the block render in a single line for the constructor. Paul's implementation was consistent and taught me how compiling different parts properly\
+made it look more readable. 
